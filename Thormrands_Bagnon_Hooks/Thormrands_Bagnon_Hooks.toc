@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: Thormrand's Bagnon Hooks
+## Notes: Custom container UI hooks for easy vault transferring.
+## Dependencies: Bagnon
+
+TBH_Main.lua
+TBH_UI.lua
+TBH_TransferLogic.lua
