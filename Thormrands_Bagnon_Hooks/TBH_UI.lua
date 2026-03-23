@@ -26,7 +26,7 @@ local function TBH_OnFrameLayout(frame)
     if not frame.tbh_tabFrame then
         -- Create the side tab container
         local tab = CreateFrame("Frame", frame:GetName() .. "_TBHTab", frame)
-        tab:SetSize(48, 88)
+        tab:SetSize(48, 128)
 
         -- Push the tab's draw layer beneath the main frame so it looks like it attaches from behind
         local parentLevel = frame:GetFrameLevel()
@@ -46,20 +46,33 @@ local function TBH_OnFrameLayout(frame)
         frame.tbh_tabFrame = tab
 
         -- Create the buttons inside it (arranged vertically)
+        frame.tbh_filterBtn = TBH_CreateButton(
+            tab,
+            frame:GetName() .. "_TBHFilter",
+            "Interface\\AddOns\\Thormrands_Bagnon_Hooks\\Asterix",
+            "Transfer items matching custom filters",
+            function(self)
+                if TBH_FilterUI and TBH_FilterUI.Toggle then
+                    TBH_FilterUI.Toggle(frame)
+                end
+            end
+        )
+        frame.tbh_filterBtn:SetPoint("TOP", tab, "TOP", 0, -10)
+
         frame.tbh_matchBtn = TBH_CreateButton(
             tab,
             frame:GetName() .. "_TBHMatch",
             "Interface\\AddOns\\Thormrands_Bagnon_Hooks\\single_arrow",
-            "Transfer Matching Items",
+            "Transfer matching items to other container",
             function(self) TBH_TransferLogic.ExecuteMatch(frame:GetFrameID()) end
         )
-        frame.tbh_matchBtn:SetPoint("TOP", tab, "TOP", 0, -10)
+        frame.tbh_matchBtn:SetPoint("TOP", frame.tbh_filterBtn, "BOTTOM", 0, -4)
 
         frame.tbh_massBtn = TBH_CreateButton(
             tab,
             frame:GetName() .. "_TBHMass",
             "Interface\\AddOns\\Thormrands_Bagnon_Hooks\\triple_arrow",
-            "Transfer All Items",
+            "Transfer all items to other container",
             function(self) TBH_TransferLogic.ExecuteMass(frame:GetFrameID()) end
         )
         frame.tbh_massBtn:SetPoint("TOP", frame.tbh_matchBtn, "BOTTOM", 0, -4)

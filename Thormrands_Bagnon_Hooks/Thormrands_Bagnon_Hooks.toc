@@ -2,7 +2,14 @@
 ## Title: Thormrand's Bagnon Hooks
 ## Notes: Custom container UI hooks for easy vault transferring.
 ## Dependencies: Bagnon
+## SavedVariables: TBH_SavedSettings
+## Version: 4.1.0
+
+Libs\LibStub\LibStub.lua
+Libs\LibCustomGlow-1.0\LibCustomGlow-1.0.lua
 
 TBH_Main.lua
+TBH_FilterLogic.lua
+TBH_FilterUI.lua
 TBH_UI.lua
 TBH_TransferLogic.lua

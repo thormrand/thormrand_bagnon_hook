@@ -166,8 +166,8 @@ function TBH_TransferLogic.Execute(sourceFrameID, isMatchMode)
         end
     end
 
-    populateConfig(targetConfig, sourceFrameID)
-    populateConfig(sourceConfig, oppositeID)
+    populateConfig(sourceConfig, sourceFrameID)
+    populateConfig(targetConfig, oppositeID)
 
     if sourceConfig.type == "guild" and not sourceConfig.tab then
         print("|cFFFF0000[TBH] Valid Guild Bank tab not selected.|r")
